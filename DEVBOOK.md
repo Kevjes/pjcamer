@@ -264,6 +264,73 @@ pj-camer/
 - Meilleure hiérarchie visuelle
 - Optimisation pour mobile
 
+### Composants de la page des entreprises
+
+#### SearchHeader.vue
+**Fonctionnalités :**
+- Barre de recherche avec filtres
+- Localisation avec carte interactive
+- Boutons d'action pour les résultats
+
+**Technologies utilisées :**
+- Vue 3 Composition API
+- TailwindCSS pour le style
+- Leaflet pour la carte interactive
+
+#### FiltersSidebar.vue
+**Fonctionnalités :**
+- Filtres de catégorie, note et prix
+- Affichage en liste ou en grille
+- Boutons d'action pour les résultats
+
+**Technologies utilisées :**
+- Vue 3 Composition API
+- TailwindCSS pour le style
+- Heroicons pour les icônes
+
+#### BusinessListHeader.vue
+**Fonctionnalités :**
+- En-tête de liste avec tri et vue
+- Boutons d'action pour les résultats
+
+**Technologies utilisées :**
+- Vue 3 Composition API
+- TailwindCSS pour le style
+- Heroicons pour les icônes
+
+#### BusinessList.vue
+**Fonctionnalités :**
+- Liste paginée des entreprises
+- Affichage en liste ou en grille
+- Boutons d'action pour les résultats
+
+**Technologies utilisées :**
+- Vue 3 Composition API
+- TailwindCSS pour le style
+- Heroicons pour les icônes
+
+#### BusinessCardList.vue
+**Fonctionnalités :**
+- Carte d'entreprise (vue liste)
+- Informations essentielles (horaires, contact, localisation)
+- Boutons d'action pour les résultats
+
+**Technologies utilisées :**
+- Vue 3 Composition API
+- TailwindCSS pour le style
+- Heroicons pour les icônes
+
+#### BusinessCardGrid.vue
+**Fonctionnalités :**
+- Carte d'entreprise (vue grille)
+- Informations essentielles (horaires, contact, localisation)
+- Boutons d'action pour les résultats
+
+**Technologies utilisées :**
+- Vue 3 Composition API
+- TailwindCSS pour le style
+- Heroicons pour les icônes
+
 ## 📝 Notes de Développement
 - Toujours vérifier la compatibilité mobile
 - Suivre les bonnes pratiques d'accessibilité (ARIA, contrastes)
@@ -293,4 +360,4 @@ npm run start
 Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE) pour plus de détails.
 
 ---
-*Dernière mise à jour : 03/06/2025 - Ajout des composants AppHeader et AppFooter*
+*Dernière mise à jour : 03/06/2025 - Ajout des composants pour la page des entreprises*

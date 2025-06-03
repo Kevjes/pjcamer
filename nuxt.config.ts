@@ -113,5 +113,9 @@ export default defineNuxtConfig({
       'stores',
       'types'
     ]
-  }
+  },
+
+  routeRules: {
+    '/entreprises': { redirect: '/entreprise' },
+  },
 })
