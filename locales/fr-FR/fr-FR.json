@@ -1,0 +1,20 @@
+{
+    "welcome": "Bienvenue sur PJ-Camer",
+    "navigation": {
+        "home": "Accueil",
+        "businesses": "Entreprises",
+        "categories": "Catégories",
+        "blog": "Blog",
+        "contact": "Contact"
+    },
+    "auth": {
+        "login": "Connexion",
+        "register": "S'inscrire",
+        "logout": "Déconnexion",
+        "profile": "Mon Profil"
+    },
+    "search": {
+        "placeholder": "Rechercher des entreprises...",
+        "button": "Rechercher"
+    }
+}
