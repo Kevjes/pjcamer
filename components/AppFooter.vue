@@ -1,9 +1,14 @@
 <template>
   <!-- Section CTA -->
-  <div class="bg-yellow-500 text-gray-900 py-16 relative overflow-hidden">
-    <div class="absolute inset-0 opacity-10">
-      <!-- Motif SVG Camerounais subtil -->
-      <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJjYW1lci1wYXR0ZXJuIiB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSgzMCkiPjxjaXJjbGUgY3g9IjMwIiBjeT0iMzAiIHI9IjIiIGZpbGw9InJnYmEoMCwwLDAsMC4xKSIvPjxsaW5lIHgxPSIzMCIgeTE9IjAiIHgyPSIzMCIgeTI9IjYwIiBzdHJva2U9InJnYmEoMCwwLDAsMC4wNSkiIHN0cm9rZS13aWR0aD0iMSIvPjxsaW5lIHgxPSIwIiB5MT0iMzAiIHgyPSI2MCIgeTI9IjMwIiBzdHJva2U9InJnYmEoMCwwLDAsMC4wNSkiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNjYW1lci1wYXR0ZXJuKSIvPjwvc3ZnPg==')]"></div>
+  <div class="relative bg-white overflow-hidden py-16">
+    <!-- Bannière avec drapeau camerounais en dégradé -->
+    <div class="absolute inset-0 bg-gradient-to-r from-green-600 via-red-600 to-yellow-400 opacity-40"></div>
+    
+    <!-- Éléments décoratifs -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute -left-20 -top-20 w-64 h-64 bg-yellow-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
+      <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-red-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+      <div class="absolute -bottom-32 left-20 w-64 h-64 bg-green-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
     </div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
       <h2 class="text-3xl md:text-4xl font-bold mb-6">Prêt à développer votre entreprise ?</h2>
@@ -26,8 +31,16 @@
   </div>
 
   <footer class="bg-gray-900 text-gray-300 pt-20 pb-12 relative overflow-hidden">
-    <!-- Conteneur des bulles en arrière-plan avec effet blur -->
+    <!-- Nouveaux effets pour le footer -->
     <div class="absolute inset-0 overflow-hidden -z-10">
+      <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-yellow-500/5 to-amber-600/5"></div>
+      <div 
+        class="absolute top-0 left-0 w-full h-full"
+        style="background: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+               background-size: 30px 30px;"
+      ></div>
+      
+      <!-- Bulles existantes... -->
       <div 
         v-for="(blob, index) in blobs" 
         :key="index"
@@ -40,10 +53,22 @@
           left: `${blob.position.left}%`
         }"
       />
+      
+      <!-- Ajout d'étoiles animées -->
+      <div 
+        v-for="(star, index) in 30" 
+        :key="index"
+        class="absolute w-1 h-1 bg-yellow-300 rounded-full animate-pulse"
+        :style="{
+          top: `${Math.random() * 100}%`,
+          left: `${Math.random() * 100}%`,
+          animationDelay: `${Math.random() * 5}s`
+        }"
+      />
     </div>
 
     <!-- Éléments décoratifs Camerounais -->
-    <div class="absolute inset-0 overflow-hidden opacity-5">
+    <div class="absolute inset-0 overflow-hidden opacity-50">
       <div class="absolute -left-20 -top-20 w-64 h-64 bg-yellow-400 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob"></div>
       <div class="absolute -right-20 -bottom-20 w-72 h-72 bg-green-500 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-blob animation-delay-2000"></div>
       <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-red-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
@@ -222,7 +247,7 @@ import { MapPinIcon, PhoneIcon, EnvelopeIcon, CreditCardIcon, BanknotesIcon, Dev
 // Icônes pour les réseaux sociaux (à remplacer par vos propres composants ou SVG)
 const FacebookIcon = () => h('svg', { class: 'h-5 w-5', fill: 'currentColor', viewBox: '0 0 24 24' }, [h('path', { d: 'M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z' })]);
 const TwitterIcon = () => h('svg', { class: 'h-5 w-5', fill: 'currentColor', viewBox: '0 0 24 24' }, [h('path', { d: 'M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-.424.728-.666 1.581-.666 2.477 0 1.61.823 3.027 2.071 3.857-.766-.024-1.483-.233-2.11-.583v.06c0 2.256 1.605 4.14 3.737 4.568-.39.106-.803.162-1.227.162-.3 0-.593-.028-.877-.082.593 1.85 2.307 3.198 4.342 3.234-1.595 1.25-3.604 1.995-5.786 1.995-.376 0-.747-.022-1.112-.065 2.062 1.323 4.51 2.093 7.14 2.093 8.57 0 13.255-7.098 13.255-13.254 0-.202-.005-.403-.014-.602.91-.658 1.7-1.475 2.323-2.41z' })]);
-const InstagramIcon = () => h('svg', { class: 'h-5 w-5', fill: 'currentColor', viewBox: '0 0 24 24' }, [h('path', { d: 'M12 2.163c3.204 0 3.584.012 4.85.07 1.172.052 1.791.218 2.175.395.484.226.885.485 1.305.905.42.42.678.821.905 1.305.177.384.343.997.395 2.175.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.052 1.178-.218 1.791-.395 2.175-.226.484-.485.885-.905 1.305-.42.42-.821.678-1.305.905-.384.177-.997.343-2.175.395-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.178-.052-1.791-.218-2.175-.395-.484-.226-.885-.485-1.305-.905-.42-.42-.678-.821-.905-1.305-.177-.384-.343-.997-.395-2.175-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.052-1.178.218-1.791.395-2.175.226-.484.485.885.905-1.305.42-.42.821-.678 1.305-.905.384-.177.997-.343 2.175-.395 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-1.27.058-2.164.229-2.913.521-.781.302-1.456.718-2.123 1.385s-1.083 1.342-1.385 2.123c-.292.749-.463 1.643-.521 2.913-.058 1.28-.072 1.688-.072 4.947s.014 3.667.072 4.947c.058 1.27.229 2.164.521 2.913.302.781.718 1.456 1.385 2.123s1.342 1.083 2.123 1.385c.749.292 1.643.463 2.913.521 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c1.27-.058 2.164-.229 2.913-.521.781-.302 1.456-.718 2.123-1.385s1.083-1.342 1.385-2.123c.292-.749.463-1.643.521-2.913.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.058-1.27-.229-2.164-.521-2.913-.302-.781-.718-1.456-1.385-2.123s-1.342-1.083-2.123-1.385c-.749-.292-1.643-.463-2.913-.521-1.28-.058-1.688-.072-4.947-.072z' }), h('path', { d: 'M12 6.865c-2.761 0-5 2.239-5 5s2.239 5 5 5 5-2.239 5-5-2.239-5-5-5zm0 8.135c-1.703 0-3.085-1.383-3.085-3.085s1.383-3.085 3.085-3.085 3.085 1.383 3.085 3.085-1.383 3.085-3.085 3.085z' }), h('circle', { cx: '16.935', cy: '7.065', r: '1.44' })]);
+const InstagramIcon = () => h('svg', { class: 'h-5 w-5', fill: 'currentColor', viewBox: '0 0 24 24' }, [h('path', { d: 'M12 2.163c3.204 0 3.584.012 4.85.07 1.172.052 1.791.218 2.175.395.484.226.885.485 1.305.905.42.42.678.821.905 1.305.177.384.343.997.395 2.175.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.052 1.178-.218 1.791-.395 2.175-.226.484-.485.885-.905 1.305-.42.42-.821.678-1.305.905-.384.177-.997.343-2.175.395-1.266.058-1.646.07-4.85.07s.012-3.584.07-4.85c.052-1.178.218-1.791.395-2.175.226-.484.485.885.905-1.305.42-.42.821-.678 1.305-.905.384-.177.997-.343 2.175-.395 1.266-.058 1.646-.07 4.85-.07zm0-2.163c-3.259 0-3.667.014-4.947.072-1.27.058-2.164.229-2.913.521-.781.302-1.456.718-2.123 1.385s-1.083 1.342-1.385 2.123c-.292.749-.463 1.643-.521 2.913-.058 1.28-.072 1.688-.072 4.947s.014 3.667.072 4.947c.058 1.27.229 2.164.521 2.913.302.781.718 1.456 1.385 2.123s1.342 1.083 2.123 1.385c.749.292 1.643.463 2.913.521 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c1.27-.058 2.164-.229 2.913-.521.781-.302 1.456-.718 2.123-1.385s1.083-1.342 1.385-2.123c.292-.749.463-1.643.521-2.913.058-1.28.072-1.688.072-4.947s-.014-3.667-.072-4.947c-.058-1.27-.229-2.164-.521-2.913-.302-.781-.718-1.456-1.385-2.123s-1.342-1.083-2.123-1.385c-.749-.292-1.643-.463-2.913-.521-1.28-.058-1.688-.072-4.947-.072z' }), h('path', { d: 'M12 6.865c-2.761 0-5 2.239-5 5s2.239 5 5 5 5-2.239 5-5-2.239-5-5-5zm0 8.135c-1.703 0-3.085-1.383-3.085-3.085s1.383-3.085 3.085-3.085 3.085 1.383 3.085 3.085-1.383 3.085-3.085 3.085z' }), h('circle', { cx: '16.935', cy: '7.065', r: '1.44' })]);
 const LinkedInIcon = () => h('svg', { class: 'h-5 w-5', fill: 'currentColor', viewBox: '0 0 24 24' }, [h('path', { d: 'M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.594-11.018-3.714v-2.155z' })]);
 
 import { h } from 'vue'; // Import h for creating render functions for icons

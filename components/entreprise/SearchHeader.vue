@@ -1,6 +1,14 @@
 <template>
-  <div class="relative bg-gradient-to-r from-red-600 to-yellow-500 text-white py-16 md:py-24">
-    <div class="absolute inset-0 bg-black/30"></div>
+  <div class="relative bg-white overflow-hidden py-16 md:py-24">
+    <!-- Bannière avec drapeau camerounais en dégradé -->
+    <div class="absolute inset-0 bg-gradient-to-r from-green-600 via-red-600 to-yellow-400 opacity-40"></div>
+    
+    <!-- Éléments décoratifs -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute -left-20 -top-20 w-64 h-64 bg-yellow-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
+      <div class="absolute -right-20 -bottom-20 w-64 h-64 bg-red-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+      <div class="absolute -bottom-32 left-20 w-64 h-64 bg-green-600 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+    </div>
     <div class="container mx-auto px-4 relative z-10">
       <div class="max-w-4xl mx-auto text-center">
         <h1 class="text-3xl md:text-4xl font-bold mb-4">Trouvez l'entreprise idéale</h1>

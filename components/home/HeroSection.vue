@@ -1,7 +1,7 @@
 <template>
   <div class="relative bg-white overflow-hidden">
     <!-- Bannière avec drapeau camerounais en dégradé -->
-    <div class="absolute inset-0 bg-gradient-to-r from-green-600 via-red-600 to-yellow-400 opacity-20"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-green-600 via-red-600 to-yellow-400 opacity-40"></div>
     
     <!-- Éléments décoratifs -->
     <div class="absolute inset-0 overflow-hidden">

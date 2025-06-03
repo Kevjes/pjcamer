@@ -98,18 +98,18 @@ pj-camer/
   - [x] Section newsletter
   - [x] Pied de page amélioré
 - [ ] Autres pages publiques
-  - [ ] **Page des entreprises**
-    - [ ] Filtres avancés (localisation, catégorie, note, etc.)
-    - [ ] Affichage en liste/carte
-    - [ ] Système de pagination
-    - [ ] Tri des résultats
-    - [ ] Carte interactive des entreprises
-    - [ ] Filtres à facettes
-    - [ ] Barre de recherche avancée
-    - [ ] Affichage des entreprises en vedette
-    - [ ] Filtres mobiles optimisés
-    - [ ] Partage des résultats de recherche
-    - [ ] Sauvegarde des préférences de recherche
+  - [x] **Page des entreprises**
+    - [x] Filtres avancés (localisation, catégorie, note, etc.)
+    - [x] Affichage en liste/carte
+    - [x] Système de pagination
+    - [x] Tri des résultats
+    - [x] Carte interactive des entreprises
+    - [x] Filtres à facettes
+    - [x] Barre de recherche avancée
+    - [x] Affichage des entreprises en vedette
+    - [x] Filtres mobiles optimisés
+    - [x] Partage des résultats de recherche
+    - [x] Sauvegarde des préférences de recherche
 
   - [ ] **Détails d'une entreprise**
     - [ ] En-tête avec galerie photos

@@ -25,6 +25,7 @@
             @update:selected-price-range="updateSelectedPriceRange"
             @reset-filters="resetFilters"
           />
+          <FacetFilters ref="facetFilters" class="mt-6" />
         </div>
 
         <!-- Contenu principal -->
@@ -48,18 +49,44 @@
           />
         </div>
       </div>
+
+      <!-- Section carte interactive -->
+      <div class="mt-12 relative">
+        <!-- Nouveaux effets de fond -->
+        <div class="absolute inset-0 overflow-hidden -z-10">
+          <div class="absolute inset-0 bg-yellow-500"></div>
+          <div 
+            class="absolute top-0 left-0 right-0 bottom-0"
+            style="background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+                   background-size: 40px 40px;"
+          ></div>
+          <div class="absolute top-1/4 left-10 w-64 h-64 bg-yellow-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+          <div class="absolute top-3/4 right-10 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 py-12 relative">
+          <h2 class="text-2xl font-bold text-gray-800 mb-6">Carte des entreprises</h2>
+          <InteractiveMap :businesses="filteredBusinesses" />
+        </div>
+      </div>
+      
+      <!-- Section de partage des résultats -->
+      <ShareResults class="mt-10" />
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted, watch } from 'vue';
 
 // Composants
 import SearchHeader from '@/components/entreprise/SearchHeader.vue';
 import FiltersSidebar from '@/components/entreprise/FiltersSidebar.vue';
 import BusinessListHeader from '@/components/entreprise/BusinessListHeader.vue';
 import BusinessList from '@/components/entreprise/BusinessList.vue';
+import InteractiveMap from '@/components/entreprise/InteractiveMap.vue';
+import FacetFilters from '@/components/entreprise/FacetFilters.vue';
+import ShareResults from '@/components/entreprise/ShareResults.vue';
 
 // Données simulées
 const locations = ref(['Douala', 'Yaoundé', 'Bafoussam', 'Garoua', 'Bamenda']);
@@ -103,6 +130,36 @@ const sortBy = ref('relevance');
 const currentView = ref('grid');
 const currentPage = ref(1);
 const itemsPerPage = 12;
+
+// Sauvegarde des filtres dans localStorage
+const saveFilters = () => {
+  const filterState = {
+    searchQuery: searchQuery.value,
+    selectedCategories: selectedCategories.value,
+    selectedLocation: selectedLocation.value,
+    minRating: minRating.value,
+    selectedPriceRange: selectedPriceRange.value
+  };
+  localStorage.setItem('businessFilters', JSON.stringify(filterState));
+};
+
+// Chargement des filtres au montage
+onMounted(() => {
+  const savedFilters = localStorage.getItem('businessFilters');
+  if (savedFilters) {
+    const parsedFilters = JSON.parse(savedFilters);
+    searchQuery.value = parsedFilters.searchQuery;
+    selectedCategories.value = parsedFilters.selectedCategories;
+    selectedLocation.value = parsedFilters.selectedLocation;
+    minRating.value = parsedFilters.minRating;
+    selectedPriceRange.value = parsedFilters.selectedPriceRange;
+  }
+});
+
+// Mettre à jour les sauvegardes quand les filtres changent
+watch([searchQuery, selectedCategories, selectedLocation, minRating, selectedPriceRange], () => {
+  saveFilters();
+});
 
 // Filtrage et pagination
 const filteredBusinesses = computed(() => {
@@ -220,5 +277,21 @@ const performSearch = () => {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-blob {
+  animation: blob 10s infinite;
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(20px, 20px) scale(1.2);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
 }
 </style>
