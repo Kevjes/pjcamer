@@ -63,6 +63,118 @@
   animation: fadeIn 0.3s ease-in-out;
 }
 
+/* Animations personnalisées */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes blob {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Dégradés personnalisés */
+.text-gradient {
+  background: linear-gradient(90deg, #1a5f2a 0%, #2d8a3a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+/* Styles pour les cartes d'entreprise */
+.business-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.business-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Badge de statut */
+.status-badge {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.status-badge::before {
+  content: '';
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background-color: #10b981; /* Vert par défaut */
+}
+
+.status-badge.closed::before {
+  background-color: #ef4444; /* Rouge pour fermé */
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-2 {
+  animation: float 8s ease-in-out infinite 1s;
+}
+
+.animate-float-3 {
+  animation: float 10s ease-in-out infinite 2s;
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Dégradé pour le texte */
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(to right, #059669, #DC2626, #D97706);
+}
+
+/* Styles pour la barre de recherche améliorée */
+.search-input {
+  @apply block w-full pl-12 pr-4 py-4 border-0 rounded-full shadow-lg focus:ring-2 focus:ring-yellow-400 focus:ring-opacity-50 text-lg transition-all duration-200;
+}
+
+.search-button {
+  @apply absolute right-1.5 top-1/2 -translate-y-1/2 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400 transition-all duration-200 transform hover:scale-105;
+}
+
 /* Utilitaires personnalisés */
 .sr-only {
   position: absolute;
@@ -74,6 +186,11 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
+}
+
+/* Dégradé pour le texte */
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-green-600 via-red-600 to-yellow-400;
 }
 
 /* Styles pour le mode sombre */

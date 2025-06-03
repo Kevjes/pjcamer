@@ -217,57 +217,9 @@
     <main class="flex-grow">
       <NuxtPage />
     </main>
-
+    
     <!-- Pied de page -->
-    <footer class="bg-gray-800 text-white">
-      <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-          <div class="col-span-2">
-            <h3 class="text-lg font-bold mb-4">PJ-Camer</h3>
-            <p class="text-gray-400">L'annuaire des entreprises du Cameroun. Trouvez les meilleures entreprises locales en un clic.</p>
-            <div class="mt-4 flex space-x-4">
-              <a href="#" class="text-gray-400 hover:text-white">
-                <span class="sr-only">Facebook</span>
-                <Icon name="mdi:facebook" class="h-6 w-6" />
-              </a>
-              <a href="#" class="text-gray-400 hover:text-white">
-                <span class="sr-only">Twitter</span>
-                <Icon name="mdi:twitter" class="h-6 w-6" />
-              </a>
-              <a href="#" class="text-gray-400 hover:text-white">
-                <span class="sr-only">Instagram</span>
-                <Icon name="mdi:instagram" class="h-6 w-6" />
-              </a>
-              <a href="#" class="text-gray-400 hover:text-white">
-                <span class="sr-only">LinkedIn</span>
-                <Icon name="mdi:linkedin" class="h-6 w-6" />
-              </a>
-            </div>
-          </div>
-          <div>
-            <h4 class="text-sm font-semibold uppercase tracking-wider mb-4">Entreprises</h4>
-            <ul class="space-y-2">
-              <li><a href="#" class="text-gray-400 hover:text-white">Toutes les catégories</a></li>
-              <li><a href="#" class="text-gray-400 hover:text-white">Entreprises récentes</a></li>
-              <li><a href="#" class="text-gray-400 hover:text-white">Meilleures notes</a></li>
-              <li><a href="#" class="text-gray-400 hover:text-white">Ajouter une entreprise</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 class="text-sm font-semibold uppercase tracking-wider mb-4">À propos</h4>
-            <ul class="space-y-2">
-              <li><a href="#" class="text-gray-400 hover:text-white">Qui sommes-nous ?</a></li>
-              <li><a href="#" class="text-gray-400 hover:text-white">Contactez-nous</a></li>
-              <li><a href="#" class="text-gray-400 hover:text-white">Conditions d'utilisation</a></li>
-              <li><a href="#" class="text-gray-400 hover:text-white">Politique de confidentialité</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="mt-8 pt-8 border-t border-gray-700">
-          <p class="text-center text-gray-400 text-sm">&copy; {{ new Date().getFullYear() }} PJ-Camer. Tous droits réservés.</p>
-        </div>
-      </div>
-    </footer>
+    <AppFooter />
     
     <!-- Bouton retour en haut -->
     <button
@@ -284,6 +236,7 @@
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
 import { useRoute } from 'vue-router';
+import AppFooter from '~/components/AppFooter.vue';
 
 const route = useRoute();
 const colorMode = useColorMode();

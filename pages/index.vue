@@ -1,13 +1,21 @@
 <template>
-  <div>
+  <div class="overflow-x-hidden">
+    <!-- Section Héro avec recherche -->
     <HeroSection @search="handleSearch" />
     
+    <!-- Section Comment ça marche -->
+    <HowItWorks />
+    
+    <!-- Section Catégories populaires -->
     <PopularCategories @select-category="handleCategorySelect" />
     
+    <!-- Section Statistiques -->
+    <StatsSection />
+    
+    <!-- Section Entreprises à la une -->
     <FeaturedBusinesses />
     
-    <Testimonials />
-    
+    <!-- Section CTA -->
     <CallToAction />
   </div>
 </template>
@@ -17,9 +25,10 @@ import { useRouter } from 'vue-router';
 
 // Importer les composants
 import HeroSection from '~/components/home/HeroSection.vue';
+import HowItWorks from '~/components/home/HowItWorks.vue';
 import PopularCategories from '~/components/home/PopularCategories.vue';
+import StatsSection from '~/components/home/StatsSection.vue';
 import FeaturedBusinesses from '~/components/home/FeaturedBusinesses.vue';
-import Testimonials from '~/components/home/Testimonials.vue';
 import CallToAction from '~/components/home/CallToAction.vue';
 
 const router = useRouter();
