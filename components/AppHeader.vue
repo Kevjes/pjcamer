@@ -58,12 +58,22 @@
               <MagnifyingGlassIcon class="h-5 w-5" />
             </button>
             <div class="hidden md:flex items-center space-x-2">
-              <NuxtLink to="/connexion" class="px-4 py-2 text-sm font-medium text-gray-700 hover:text-green-600 transition-colors">
-                Connexion
-              </NuxtLink>
-              <NuxtLink to="/inscription" class="px-4 py-2 text-sm font-medium text-white bg-green-600 rounded-md hover:bg-green-700 transition-colors">
-                Inscription
-              </NuxtLink>
+              <template v-if="!isAuthenticated">
+                <NuxtLink to="/login" class="px-4 py-2 text-sm font-medium text-gray-700 hover:text-green-600 transition-colors">
+                  Connexion
+                </NuxtLink>
+                <NuxtLink to="/register" class="px-4 py-2 text-sm font-medium text-white bg-green-600 rounded-md hover:bg-green-700 transition-colors">
+                  Inscription
+                </NuxtLink>
+              </template>
+              <template v-else>
+                <NuxtLink to="/profil" class="px-4 py-2 text-sm font-medium text-gray-700 hover:text-green-600 transition-colors">
+                  {{ currentUser?.firstName || 'Profil' }}
+                </NuxtLink>
+                <button @click="logout" class="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 transition-colors">
+                  Déconnexion
+                </button>
+              </template>
             </div>
             <!-- Menu mobile -->
             <button 
@@ -100,18 +110,37 @@
               {{ item.name }}
             </NuxtLink>
             <div class="pt-4 pb-2 border-t border-gray-200">
-              <NuxtLink
-                to="/connexion"
-                class="block w-full text-center px-4 py-2 text-base font-medium text-gray-700 hover:text-green-600"
-              >
-                Connexion
-              </NuxtLink>
-              <NuxtLink
-                to="/inscription"
-                class="mt-2 block w-full text-center px-4 py-2 rounded-md text-base font-medium text-white bg-green-600 hover:bg-green-700"
-              >
-                Inscription
-              </NuxtLink>
+              <template v-if="!isAuthenticated">
+                <NuxtLink
+                  to="/login"
+                  @click="isMobileMenuOpen = false"
+                  class="block w-full text-center px-4 py-2 text-base font-medium text-gray-700 hover:text-green-600"
+                >
+                  Connexion
+                </NuxtLink>
+                <NuxtLink
+                  to="/register"
+                  @click="isMobileMenuOpen = false"
+                  class="mt-2 block w-full text-center px-4 py-2 rounded-md text-base font-medium text-white bg-green-600 hover:bg-green-700"
+                >
+                  Inscription
+                </NuxtLink>
+              </template>
+              <template v-else>
+                <NuxtLink
+                  to="/profil"
+                  @click="isMobileMenuOpen = false"
+                  class="block w-full text-center px-4 py-2 text-base font-medium text-gray-700 hover:text-green-600"
+                >
+                  {{ currentUser?.firstName || 'Profil' }}
+                </NuxtLink>
+                <button 
+                  @click="logoutAndCloseMenu"
+                  class="mt-2 block w-full text-center px-4 py-2 rounded-md text-base font-medium text-white bg-red-600 hover:bg-red-700"
+                >
+                  Déconnexion
+                </button>
+              </template>
             </div>
           </div>
         </div>
@@ -121,7 +150,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, computed } from 'vue';
+import { useAuthStore } from '~/stores/auth';
 import { 
   MagnifyingGlassIcon,
   Bars3Icon,
@@ -132,6 +162,10 @@ import {
 
 const isScrolled = ref(false);
 const isMobileMenuOpen = ref(false);
+const authStore = useAuthStore();
+
+const isAuthenticated = computed(() => authStore.isAuthenticated);
+const currentUser = computed(() => authStore.currentUser);
 
 const navItems = [
   { name: 'Accueil', href: '/' },
@@ -169,6 +203,18 @@ onMounted(() => {
 
 // Fermer le menu mobile lors de la navigation
 const route = useRoute();
+const logout = async () => {
+  await authStore.logout();
+  // Rediriger vers l'accueil après la déconnexion
+  const router = useRouter();
+  router.push('/');
+};
+
+const logoutAndCloseMenu = async () => {
+  await logout();
+  isMobileMenuOpen.value = false;
+};
+
 watch(() => route.path, () => {
   isMobileMenuOpen.value = false;
 });

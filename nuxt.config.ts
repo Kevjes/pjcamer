@@ -40,7 +40,10 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'anonymous' },
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap' }
       ]
-    }
+    },
+    buildAssetsDir: '/_nuxt/',
+    layoutTransition: { name: 'layout', mode: 'out-in' },
+    pageTransition: { name: 'page', mode: 'out-in' }
   },
 
   // Configuration de TailwindCSS
@@ -80,7 +83,7 @@ export default defineNuxtConfig({
   // Configuration du runtime
   runtimeConfig: {
     public: {
-      apiBase: process.env.NUXT_PUBLIC_API_BASE || '/api',
+      apiBase: process.env.NUXT_PUBLIC_API_BASE || 'http://localhost:3000/api',
       appName: 'PJ-Camer',
       appVersion: '1.0.0',
       environment: process.env.NODE_ENV || 'development'
@@ -115,7 +118,11 @@ export default defineNuxtConfig({
     ]
   },
 
+
   routeRules: {
     '/entreprises': { redirect: '/entreprise' },
   },
+  nitro: {
+    preset: 'node-server' // Utiliser le preset node-server
+  }
 })

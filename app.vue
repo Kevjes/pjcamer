@@ -8,6 +8,11 @@
 
 <script setup>
 // Configuration globale de l'application
+import { useAuthStore } from '~/stores/auth'; // Ajustez le chemin si nécessaire
+const authStore = useAuthStore();
+if (process.client) {
+  authStore.initAuth();
+}
 useHead({
   htmlAttrs: {
     lang: 'fr',

@@ -1,0 +1,22 @@
+// fichier: prisma/schema.prisma
+
+// Bloc datasource pour PostgreSQL
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Bloc generator (optionnel mais recommandé pour Prisma Client)
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Modèle utilisateur
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

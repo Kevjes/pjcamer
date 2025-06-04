@@ -40,11 +40,11 @@ pj-camer/
 ## 🚀 Fonctionnalités
 
 ### 🌐 Espace Public
-- [ ] Page d'accueil avec recherche
+- [x] Page d'accueil avec recherche
 - [ ] Page de recherche avancée
-- [ ] Fiche entreprise détaillée
-- [ ] Système d'authentification
-- [ ] Profil utilisateur
+- [x] Fiche entreprise détaillée
+- [x] Système d'authentification (Complet)
+- [x] Profil utilisateur (Page basique)
 - [ ] Système de réservation
 - [ ] Messagerie instantanée
 - [ ] Système d'avis et notation
@@ -111,43 +111,52 @@ pj-camer/
     - [x] Partage des résultats de recherche
     - [x] Sauvegarde des préférences de recherche
 
-  - [ ] **Détails d'une entreprise**
-    - [ ] En-tête avec galerie photos
-    - [ ] Informations essentielles (horaires, contact, localisation)
-    - [ ] Section description détaillée
-    - [ ] Galerie d'images
-    - [ ] Avis et notations
-    - [ ] Carte d'emplacement interactive
-    - [ ] Entreprises similaires
-    - [ ] Bouton d'appel direct
-    - [ ] Intégration des réseaux sociaux
-    - [ ] Section FAQ de l'entreprise
-    - [ ] Formulaire de contact direct
+  - [x] **Détails d'une entreprise**
+    - [x] En-tête avec galerie photos
+    - [x] Informations essentielles (horaires, contact, localisation)
+    - [x] Section description détaillée
+    - [x] Galerie d'images
+    - [x] Avis et notations
+    - [x] Carte d'emplacement interactive
+    - [x] Entreprises similaires
+    - [x] Bouton d'appel direct
+    - [x] Intégration des réseaux sociaux
+    - [x] Section FAQ de l'entreprise
+    - [x] Formulaire de contact direct
 
-  - [ ] **Page de contact**
-    - [ ] Formulaire de contact complet
-    - [ ] Carte interactive
-    - [ ] Informations de contact détaillées
-    - [ ] Horaires d'ouverture
-    - [ ] FAQ de contact
-    - [ ] Réseaux sociaux
-    - [ ] Formulaire de support
-    - [ ] Section de localisation
-    - [ ] Témoignages clients
-    - [ ] Bouton d'appel rapide (mobile)
-    - [ ] Confirmation d'envoi
+  - [x] **Page de contact**
+    - [x] Formulaire de contact complet
+    - [x] Carte interactive
+    - [x] Informations de contact détaillées
+    - [x] Horaires d'ouverture
+    - [x] FAQ de contact
+    - [x] Réseaux sociaux
+    - [x] Formulaire de support
+    - [x] Section de localisation
 
-  - [ ] **Page À propos**
-    - [ ] Notre histoire
-    - [ ] Équipe dirigeante
-    - [ ] Valeurs de l'entreprise
-    - [ ] Témoignages clients
-    - [ ] Chiffres clés
-    - [ ] Galerie d'images
-    - [ ] Partenaires
-    - [ ] Téléchargements (brochures, etc.)
-    - [ ] FAQ
-    - [ ] Appel à l'action
+  - [x] **Page FAQ**
+    - [x] Catégories de questions
+    - [x] Barre de recherche
+    - [x] Questions fréquentes
+    - [x] Formulaire de contact
+    - [x] Articles utiles
+    - [x] Mise en avant des questions populaires
+    - [x] Navigation rapide
+    - [x] Feedback sur les réponses
+    - [x] Mise à jour du contenu
+    - [x] Version imprimable
+
+  - [x] **Page 404**
+    - [x] Design personnalisé
+    - [x] Message d'erreur clair
+    - [x] Liens utiles
+    - [x] Barre de recherche
+    - [x] Bouton retour à l'accueil
+    - [x] Animation légère
+    - [x] Suggestions de contenu
+    - [x] Message d'excuses
+    - [x] Suivi des erreurs
+    - [x] Redirection automatique
 
   - [ ] **Page Blog/Actualités**
     - [ ] Liste des articles
@@ -161,34 +170,42 @@ pj-camer/
     - [ ] Articles similaires
     - [ ] Pagination
 
-  - [ ] **Page FAQ**
-    - [ ] Catégories de questions
-    - [ ] Barre de recherche
-    - [ ] Questions fréquentes
-    - [ ] Formulaire de contact
-    - [ ] Articles utiles
-    - [ ] Mise en avant des questions populaires
-    - [ ] Navigation rapide
-    - [ ] Feedback sur les réponses
-    - [ ] Mise à jour du contenu
-    - [ ] Version imprimable
+  - [ ] **Page À propos**
+    - [ ] Notre histoire
+    - [ ] Équipe dirigeante
+    - [ ] Valeurs de l'entreprise
+    - [ ] Témoignages clients
+    - [ ] Chiffres clés
+    - [ ] Galerie d'images
+    - [ ] Partenaires
+    - [ ] Téléchargements (brochures, etc.)
+    - [ ] FAQ
+    - [ ] Appel à l'action
 
-  - [ ] **Page 404**
-    - [ ] Design personnalisé
-    - [ ] Message d'erreur clair
-    - [ ] Liens utiles
-    - [ ] Barre de recherche
-    - [ ] Bouton retour à l'accueil
-    - [ ] Animation légère
-    - [ ] Suggestions de contenu
-    - [ ] Message d'excuses
-    - [ ] Suivi des erreurs
-    - [ ] Redirection automatique
 - [ ] Développement de l'espace entreprise
 - [ ] Développement de l'administration
 
+- [ ] **Système d'Authentification (Frontend)**
+  - [x] Store Pinia (auth.js)
+  - [x] Pages de Connexion et Inscription (login.vue, register.vue)
+  - [x] Page Profil (profil.vue)
+  - [x] Layout d'authentification (layouts/auth.vue)
+  - [x] Middleware de protection des routes (middleware/auth.global.js)
+  - [x] Plugin d'initialisation du store (plugins/auth.client.js)
+  - [x] Mise à jour du Header (AppHeader.vue) pour affichage conditionnel
+
 ### Développement Backend
-- [ ] Configuration de la base de données
+- [ ] **Système d'Authentification (Backend)**
+  - [x] Configuration base de données PostgreSQL avec Sequelize
+  - [x] Modèle User (server/models/User.js)
+  - [x] Routes d'authentification (register, login, profile) (server/routes/authRoutes.js)
+  - [x] Contrôleurs d'authentification (server/controllers/authController.js)
+  - [x] Middleware JWT (server/middleware/authMiddleware.js)
+  - [x] Hachage de mot de passe avec bcryptjs
+  - [x] Configuration variables d'environnement (.env)
+  - [x] Initialisation Express et middlewares (cors, json) (server/app.js)
+
+- [ ] Configuration de la base de données (général)
 - [ ] Développement des API
 - [ ] Intégration des paiements
 - [ ] Mise en place du système de cache
